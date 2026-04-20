@@ -1,0 +1,2 @@
+slide/index.html の内容をPuppeteerを使って各ページごとに pdfにするスクリプトを slide/export_pdf.js として生成して。
+最終的なPDFは slide/vector_based_ai_development.pdf に生成される感じでお願い。

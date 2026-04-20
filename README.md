@@ -75,3 +75,21 @@ main.md を加筆修正し、claude code でprompt/update.txtのように create
 ```
 main.md を更新したので追従して欲しい
 ```
+
+
+### スライド資料を pdf 化したい
+
+claude code にスライドを指定して、Puppeteerを使ってpdfにして欲しい、とお願いしましょう：
+```
+slide/index.html の内容をPuppeteerを使って各ページごとに pdfにするスクリプトを slide/export_pdf.js として生成して。
+最終的なPDFは slide/vector_based_ai_development.pdf に出力される感じでお願い。
+```
+
+生成されたスクリプトを実行するとpdfが生成されます。
+```
+npm install
+node slide/export_pdf.js
+```
+
+確認して問題があれば claude code に問い合わせると良いでしょう。
+
