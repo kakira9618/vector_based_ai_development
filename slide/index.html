@@ -11,13 +11,29 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
 body {
   font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-  background: #0a0a0a;
   color: #fff;
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fixed design canvas: 1920x1080. Everything inside is in px.
+   The .stage is scaled uniformly by JS to fit the viewport. */
+.stage {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: center center;
+  flex-shrink: 0;
 }
 
 .slide {
@@ -25,9 +41,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  padding: 4vw;
+  width: 1920px;
+  height: 1080px;
+  padding: 80px;
   text-align: center;
   position: absolute;
   top: 0;
@@ -54,37 +70,38 @@ body {
 }
 
 h1 {
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: 160px;
   font-weight: 900;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-size: 140px;
   font-weight: 900;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .subtitle {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  margin-top: 1.5rem;
+  font-size: 40px;
+  margin-top: 32px;
   opacity: 0.7;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 ul, ol {
   list-style: none;
   text-align: left;
-  font-size: clamp(1.5rem, 3.5vw, 3rem);
+  font-size: 72px;
   font-weight: 700;
   line-height: 1.8;
 }
 
 ul li::before {
   content: ">";
-  margin-right: 0.8rem;
+  margin-right: 16px;
   color: #6cf;
   font-weight: 900;
 }
@@ -99,7 +116,7 @@ ol li {
 
 ol li::before {
   content: counter(item) ".";
-  margin-right: 0.8rem;
+  margin-right: 16px;
   color: #f8b;
   font-weight: 900;
 }
@@ -109,46 +126,47 @@ ol li::before {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 2vw;
-  margin-top: 2vh;
+  gap: 40px;
+  margin-top: 40px;
 }
 
 .media-container img {
-  max-width: 80vw;
-  max-height: 60vh;
+  max-width: 1500px;
+  max-height: 640px;
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 4px 30px rgba(100, 200, 255, 0.15);
 }
 
-.media-container.two-images img {
-  max-width: 38vw;
-  max-height: 55vh;
+.media-container.two-images img,
+.media-container.two-images video {
+  max-width: 720px;
+  max-height: 580px;
 }
 
 .media-container video {
-  max-width: 70vw;
-  max-height: 60vh;
+  max-width: 1400px;
+  max-height: 640px;
   border-radius: 8px;
   box-shadow: 0 4px 30px rgba(100, 200, 255, 0.15);
 }
 
 table {
   border-collapse: collapse;
-  font-size: clamp(0.8rem, 1.6vw, 1.4rem);
+  font-size: 32px;
   font-weight: 600;
-  margin-top: 2vh;
+  margin-top: 40px;
 }
 
 table th {
   background: #6cf;
   color: #0a0a0a;
-  padding: 0.6em 1.2em;
+  padding: 14px 28px;
   font-weight: 900;
 }
 
 table td {
-  padding: 0.5em 1em;
+  padding: 12px 24px;
   border-bottom: 1px solid #333;
 }
 
@@ -172,8 +190,8 @@ table tr:nth-child(even) td {
 }
 
 .link {
-  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
-  margin-top: 1.5rem;
+  font-size: 26px;
+  margin-top: 32px;
   opacity: 0.6;
   word-break: break-all;
 }
@@ -195,15 +213,18 @@ table tr:nth-child(even) td {
 
 .slide-number {
   position: fixed;
-  bottom: 1rem;
-  right: 1.5rem;
-  font-size: 0.9rem;
+  bottom: 14px;
+  right: 22px;
+  font-size: 14px;
   opacity: 0.3;
   font-weight: 600;
+  z-index: 100;
 }
 </style>
 </head>
 <body>
+
+<div class="stage" id="stage">
 
 <!-- Slide 1: Title -->
 <div class="slide" id="slide-1">
@@ -215,7 +236,7 @@ table tr:nth-child(even) td {
 <div class="slide" id="slide-2">
   <h2>個人開発での問題</h2>
   <p class="subtitle">AIを組み込んだ製品をつくる</p>
-  <ul style="margin-top: 3vh;">
+  <ul style="margin-top: 60px;">
     <li>アイデア（そもそも何を作るか）</li>
     <li>コスト（AIのランニングコスト）</li>
   </ul>
@@ -237,7 +258,7 @@ table tr:nth-child(even) td {
 <!-- Slide 5: Benefits -->
 <div class="slide" id="slide-5">
   <h2><span class="accent">"ベクタ"</span> のいいところ</h2>
-  <p class="subtitle" style="margin-bottom: 2vh;">"ベクタ" = 構造化テキスト</p>
+  <p class="subtitle" style="margin-bottom: 40px;">"ベクタ" = 構造化テキスト</p>
   <ol>
     <li>生成コストが低い</li>
     <li>ピンポイント修正ができる</li>
@@ -318,15 +339,28 @@ table tr:nth-child(even) td {
   <p class="subtitle">個人開発AIプロダクトのアイデア原石</p>
   <div class="media-container two-images">
     <img src="../resources/title-final.png" alt="Book Cover">
-    <img src="../resources/qrcode.png" alt="QR Code" style="background: #fff; padding: 1rem;">
+    <img src="../resources/qrcode.png" alt="QR Code" style="background: #fff; padding: 20px;">
   </div>
   <div class="link"><a href="https://techbookfest.org/product/gm3siYnQ8wFwSDuY3WdrnY?productVariantID=aa09VYxqsyBF4QRKXCk9X6" target="_blank">技術書典で販売中</a></div>
+</div>
+
 </div>
 
 <div class="progress" id="progress"></div>
 <div class="slide-number" id="slide-number"></div>
 
 <script>
+const CANVAS_W = 1920;
+const CANVAS_H = 1080;
+const stage = document.getElementById('stage');
+
+function fitStage() {
+  const scale = Math.min(window.innerWidth / CANVAS_W, window.innerHeight / CANVAS_H);
+  stage.style.transform = `scale(${scale})`;
+}
+window.addEventListener('resize', fitStage);
+fitStage();
+
 const slides = document.querySelectorAll('.slide');
 let current = 0;
 const total = slides.length;
@@ -336,11 +370,9 @@ function showSlide(index) {
     s.classList.remove('active', 'animate-in');
   });
   slides[index].classList.add('active');
-  // Trigger reflow for animation
   void slides[index].offsetWidth;
   slides[index].classList.add('animate-in');
 
-  // Update progress
   document.getElementById('progress').style.width = ((index + 1) / total * 100) + '%';
   document.getElementById('slide-number').textContent = (index + 1) + ' / ' + total;
 }
@@ -370,7 +402,6 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('click', (e) => {
-  // Left half = prev, right half = next
   if (e.clientX < window.innerWidth * 0.3) {
     prev();
   } else {
@@ -378,7 +409,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Initialize
 showSlide(0);
 </script>
 </body>
