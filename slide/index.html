@@ -182,8 +182,8 @@ ol li::before {
 }
 
 .lightbox-content {
-  max-width: 92vw;
-  max-height: 92vh;
+  width: 92vw;
+  height: 92vh;
   object-fit: contain;
   cursor: default;
   border-radius: 8px;
@@ -482,6 +482,13 @@ function openLightbox(srcEl) {
     clone.alt = srcEl.alt || '';
   }
   clone.className = 'lightbox-content';
+  if (srcEl.tagName !== 'VIDEO') {
+    clone.style.cursor = 'zoom-out';
+    clone.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
+  }
   lightboxBody.appendChild(clone);
   lightbox.classList.add('active');
 }
