@@ -22,7 +22,7 @@
 2. ピンポイント修正ができる
 3. ドメイン変更が容易い
 
-## 例: ラスタ画像から背景を抽出
+## 例: ラスタ画像から背景を"ベクタ"で抽出
 - background_svg_extract_prompt.png
 - background_svg_extract_result.png
 
