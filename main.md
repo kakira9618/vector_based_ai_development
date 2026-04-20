@@ -54,8 +54,8 @@
 - handwrite_to_3dcg_animation_result.mov
 
 ## もちろんこのスライドも "ベクタ" からの生成
-- slide_from_vector_prompt.png
 - slide_from_vector.png
+- slide_from_vector_prompt.png
 - ソース: https://github.com/kakira9618/vector_based_ai_development
 
 ## 宣伝
