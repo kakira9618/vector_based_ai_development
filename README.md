@@ -20,7 +20,7 @@ h2 でスライドのページを区切る仕様です。
 
 ### Claude Code によるスライド本体の生成
 
-prompt/create.txt にあるプロンプトを claude code に投げるだけでスライドが slide/index.html にできます。
+prompt/create.txt にあるプロンプトを claude code (Opus 4.6 など) に投げるだけでスライドが slide/index.html にできます。
 
 ```
 main.mdに作ってほしいスライドの内容を書いたので、スライド形式のアプリケーションをhtml + javascript で作って。
