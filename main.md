@@ -7,7 +7,7 @@
 場面: AIを組み込んだ製品をつくる
 
 - アイデア（そもそも何を作るか）
-- コスト（AIのランニングコスト）
+- コスト（料金、運用、生成スピード）
 
 ## 解決策の提示
 - "ベクタ" に注目しよう
@@ -60,6 +60,7 @@
 
 ## 宣伝
 個人開発AIプロダクトのアイデア原石
+- X: kakira9618
 - title-final.png
 - https://techbookfest.org/product/gm3siYnQ8wFwSDuY3WdrnY?productVariantID=aa09VYxqsyBF4QRKXCk9X6&utm_campaign=share
 - QRコード: qrcode.png
