@@ -651,6 +651,19 @@ function prev() {
   }
 }
 
+let numberBuffer = '';
+let numberTimer = null;
+
+function commitNumberJump() {
+  const num = parseInt(numberBuffer, 10);
+  numberBuffer = '';
+  numberTimer = null;
+  if (!isNaN(num) && num >= 1 && num <= total) {
+    current = num - 1;
+    showSlide(current);
+  }
+}
+
 const lightbox = document.getElementById('lightbox');
 const lightboxBody = document.getElementById('lightbox-body');
 const lightboxClose = document.getElementById('lightbox-close');
@@ -720,6 +733,15 @@ document.addEventListener('keydown', (e) => {
   } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
     e.preventDefault();
     prev();
+  } else if (/^[0-9]$/.test(e.key)) {
+    e.preventDefault();
+    numberBuffer += e.key;
+    if (numberTimer) clearTimeout(numberTimer);
+    if (numberBuffer.length >= 2) {
+      commitNumberJump();
+    } else {
+      numberTimer = setTimeout(commitNumberJump, 500);
+    }
   }
 });
 

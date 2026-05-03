@@ -1,6 +1,6 @@
 # "ベクタ" に注目したAI活用
 
-2026/4/21 に [AIエンタメの未来を語り尽くす会](https://genai-expo-team.connpass.com/event/389724/?utm_campaign=event_message_to_selected_participant&utm_source=notifications&utm_medium=email&utm_content=title_link) で発表したスライド資料のリポジトリです。
+2026/4/21 の [AIエンタメの未来を語り尽くす会](https://genai-expo-team.connpass.com/event/389724) と、2026/5/6 の [生成AIなんでも展示会 Vol.5](https://techplay.jp/event/987273) で発表したスライド資料のリポジトリです。
 
 スライド資料の "ベクタ" 表現である markdown テキストから "ラスタ"表現である スライドが簡単に生成できます。
 
