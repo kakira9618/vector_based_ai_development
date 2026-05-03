@@ -1,6 +1,6 @@
 # "ベクタ" に注目したAI活用
 - kakira9618
-- 2026/4/21
+- 2026/5/6
 
 ## 問題提起：個人開発での問題
 
@@ -39,9 +39,13 @@
 | グラフ | png（画像） | csv（表データ） |
 | ソースコード | .js、.html（テキスト） | Markdown（自然言語での仕様） |
 
-## 例: 音楽のベクタ (MIDI) を入力に
+## 例: 音楽の"ベクタ" (MIDI) を入力に
 - piano_tensaku_tweet.png
 - https://x.com/kakira9618/status/1919286710254317639
+- midi_to_report.mp4
+- midi_to_report1.jpeg
+- midi_to_report2.jpeg
+- midi_to_report3.jpeg
 
 ## 現在 iPadアプリ化中
 - piano_tensaku_product.png
@@ -62,6 +66,5 @@
 個人開発AIプロダクトのアイデア原石
 - X: kakira9618
 - title-final.png
-- https://techbookfest.org/product/gm3siYnQ8wFwSDuY3WdrnY?productVariantID=aa09VYxqsyBF4QRKXCk9X6&utm_campaign=share
 - QRコード: qrcode.png
-
+ブース【A-5】で物理本頒布・[技術書典](https://techbookfest.org/product/gm3siYnQ8wFwSDuY3WdrnY?productVariantID=aa09VYxqsyBF4QRKXCk9X6&utm_campaign=share)でオンライン頒布中

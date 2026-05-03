@@ -15,15 +15,30 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: #0a0a0a;
+  background: #d9d9d4;
 }
 
 body {
-  font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-  color: #fff;
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Lato', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  color: #242424;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+:root {
+  --paper: #ffffff;
+  --paper-soft: #f3f3f3;
+  --ink: #242424;
+  --muted: #515151;
+  --charcoal: #303030;
+  --orange: #f46524;
+  --orange-deep: #ed561b;
+  --teal: #158158;
+  --blue: #058dc7;
+  --green: #50b432;
+  --cyan: #24cbe5;
+  --line: #d9d9d9;
 }
 
 /* Fixed design canvas: 1920x1080. Everything inside is in px.
@@ -34,20 +49,30 @@ body {
   height: 1080px;
   transform-origin: center center;
   flex-shrink: 0;
+  background: var(--paper);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
 }
 
 .slide {
   display: none;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 1920px;
   height: 1080px;
-  padding: 80px;
-  text-align: center;
+  padding: 92px 116px;
+  text-align: left;
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.slide > * {
+  position: relative;
+  z-index: 1;
 }
 
 .slide.active {
@@ -70,39 +95,63 @@ body {
 }
 
 h1 {
-  font-size: 160px;
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  max-width: 1320px;
+  color: var(--ink);
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Raleway', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  font-size: 126px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: 0;
 }
 
 h2 {
-  font-size: 140px;
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  max-width: 1520px;
+  color: var(--ink);
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Raleway', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  font-size: 104px;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: 0;
 }
 
 .subtitle {
-  font-size: 40px;
-  margin-top: 32px;
-  opacity: 0.7;
-  font-weight: 500;
-  line-height: 1.5;
+  max-width: 1180px;
+  color: var(--muted);
+  font-size: 38px;
+  margin-top: 28px;
+  opacity: 1;
+  font-weight: 700;
+  line-height: 1.45;
 }
 
 ul, ol {
   list-style: none;
   text-align: left;
-  font-size: 72px;
+  max-width: 1380px;
+  color: var(--ink);
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Raleway', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  font-size: 56px;
   font-weight: 700;
-  line-height: 1.8;
+  line-height: 1.45;
+}
+
+ul li,
+ol li {
+  position: relative;
+  padding-left: 68px;
+}
+
+ul li + li,
+ol li + li {
+  margin-top: 24px;
 }
 
 ul li::before {
-  content: ">";
-  margin-right: 16px;
-  color: #6cf;
+  content: "➔";
+  position: absolute;
+  left: 0;
+  top: 0.02em;
+  color: var(--orange);
   font-weight: 900;
 }
 
@@ -116,8 +165,10 @@ ol li {
 
 ol li::before {
   content: counter(item) ".";
-  margin-right: 16px;
-  color: #f8b;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--orange);
   font-weight: 900;
 }
 
@@ -126,16 +177,19 @@ ol li::before {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 38px;
+  width: 100%;
   margin-top: 40px;
 }
 
 .media-container img {
-  max-width: 1500px;
-  max-height: 640px;
+  max-width: 1480px;
+  max-height: 570px;
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 4px 30px rgba(100, 200, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.12);
   cursor: zoom-in;
   transition: transform 0.2s ease;
 }
@@ -143,21 +197,66 @@ ol li::before {
 .media-container.two-images img,
 .media-container.two-images video {
   max-width: 720px;
-  max-height: 580px;
+  max-height: 520px;
+}
+
+.media-container.three-items img,
+.media-container.three-items video {
+  max-width: 480px;
+  max-height: 480px;
+}
+
+.media-container.split-layout {
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.media-container.split-layout .split-left {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-container.split-layout .split-left img {
+  max-width: 100%;
+  max-height: 640px;
+}
+
+.media-container.split-layout .split-right {
+  flex: 1 1 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+  align-content: center;
+}
+
+.media-container.split-layout .split-right img,
+.media-container.split-layout .split-right video {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: 310px;
+  object-fit: contain;
 }
 
 .media-container video {
   max-width: 1400px;
-  max-height: 640px;
-  border-radius: 8px;
-  box-shadow: 0 4px 30px rgba(100, 200, 255, 0.15);
+  max-height: 570px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.12);
   cursor: zoom-in;
   transition: transform 0.2s ease;
 }
 
 .media-container img:hover,
 .media-container video:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .lightbox {
@@ -186,7 +285,7 @@ ol li::before {
   height: 92vh;
   object-fit: contain;
   cursor: default;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: 0 8px 60px rgba(0, 0, 0, 0.6);
 }
 
@@ -218,72 +317,155 @@ ol li::before {
 
 table {
   border-collapse: collapse;
-  font-size: 32px;
-  font-weight: 600;
+  width: 1480px;
+  max-width: 100%;
+  color: var(--ink);
+  font-size: 34px;
+  font-weight: 700;
   margin-top: 40px;
+  background: #fff;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.1);
 }
 
 table th {
-  background: #6cf;
-  color: #0a0a0a;
-  padding: 14px 28px;
+  background: var(--charcoal);
+  color: #fff;
+  padding: 18px 26px;
   font-weight: 900;
 }
 
+table th:first-child {
+  background: var(--orange);
+}
+
 table td {
-  padding: 12px 24px;
-  border-bottom: 1px solid #333;
+  padding: 17px 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+table td .note {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 22px;
+  font-weight: 500;
 }
 
 table tr:nth-child(even) td {
-  background: rgba(255,255,255,0.03);
+  background: var(--paper-soft);
 }
 
 .accent {
-  color: #6cf;
+  color: var(--orange);
 }
 
 .accent-pink {
-  color: #f8b;
+  color: var(--green);
 }
 
 .highlight {
-  background: linear-gradient(135deg, #6cf 0%, #f8b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--orange);
+  background: none;
+  -webkit-text-fill-color: currentColor;
 }
 
 .link {
-  font-size: 26px;
+  width: 100%;
+  max-width: 1480px;
+  color: var(--muted);
+  font-size: 24px;
   margin-top: 32px;
-  opacity: 0.6;
+  opacity: 1;
   word-break: break-all;
 }
 
 .link a {
-  color: #6cf;
+  color: var(--blue);
   text-decoration: none;
+  border-bottom: 2px solid rgba(5, 141, 199, 0.25);
 }
 
 .progress {
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #6cf, #f8b);
+  height: 6px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-deep));
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 100;
 }
 
 .slide-number {
   position: fixed;
-  bottom: 14px;
-  right: 22px;
-  font-size: 14px;
-  opacity: 0.3;
-  font-weight: 600;
+  bottom: 18px;
+  right: 24px;
+  padding: 6px 10px;
+  color: #fff;
+  background: rgba(48, 48, 48, 0.72);
+  font-size: 16px;
+  opacity: 1;
+  font-weight: 700;
   z-index: 100;
+}
+
+#slide-1 {
+  background: var(--charcoal);
+  color: #fff;
+}
+
+#slide-13 {
+  background: var(--orange);
+  color: #fff;
+}
+
+#slide-1 h1,
+#slide-1 .subtitle,
+#slide-13 h2,
+#slide-13 .subtitle,
+#slide-13 .link,
+#slide-13 .link a {
+  color: #fff;
+  -webkit-text-fill-color: currentColor;
+}
+
+#slide-1 .subtitle {
+  width: 1320px;
+  padding-top: 30px;
+  border-top: 2px solid rgba(255, 255, 255, 0.78);
+  font-weight: 700;
+}
+
+#slide-1 .accent {
+  color: var(--orange);
+  -webkit-text-fill-color: var(--orange);
+}
+
+#slide-3 {
+  background: var(--charcoal);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#slide-3 h2 {
+  color: #fff;
+  font-size: 180px;
+  max-width: none;
+  text-align: center;
+  line-height: 1.15;
+}
+
+#slide-3 .accent {
+  color: var(--orange);
+}
+
+#slide-13 .media-container img {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+#slide-13 .link a {
+  border-bottom-color: rgba(255, 255, 255, 0.55);
 }
 </style>
 </head>
@@ -293,8 +475,8 @@ table tr:nth-child(even) td {
 
 <!-- Slide 1: Title -->
 <div class="slide" id="slide-1">
-  <h1 class="highlight">"ベクタ" に注目した<br>AI活用</h1>
-  <p class="subtitle">kakira9618<br>2026/4/21</p>
+  <h1><span class="accent">"ベクタ"</span> に注目した<br>AI活用</h1>
+  <p class="subtitle">kakira9618<br>2026/5/6</p>
 </div>
 
 <!-- Slide 2: Problem -->
@@ -314,7 +496,7 @@ table tr:nth-child(even) td {
 
 <!-- Slide 4: What is Vector -->
 <div class="slide" id="slide-4">
-  <h2>"ベクタ" って<br>なんやねん</h2>
+  <h2><span class="accent">"ベクタ"</span> って<br>なんやねん</h2>
   <div class="media-container">
     <img src="resources/01_vector_vs_raster.png" alt="Vector vs Raster">
   </div>
@@ -345,27 +527,35 @@ table tr:nth-child(even) td {
   <h2>画像以外の <span class="accent">"ベクタ"</span></h2>
   <table>
     <tr><th>メディア</th><th>ラスタ形式</th><th>ベクタ形式</th></tr>
-    <tr><td>画像</td><td>JPG、PNG</td><td>SVG、PostScript</td></tr>
-    <tr><td>音楽</td><td>WAV、MP3</td><td>MIDI、楽譜</td></tr>
-    <tr><td>動画</td><td>GIF、MP4</td><td>Flash</td></tr>
-    <tr><td>スライド</td><td>PPTX</td><td>Markdown</td></tr>
-    <tr><td>グラフ</td><td>PNG</td><td>CSV</td></tr>
-    <tr><td>ソースコード</td><td>.js、.html</td><td>Markdown</td></tr>
+    <tr><td>画像</td><td>JPG、PNG<span class="note">（ピクセルの集合）</span></td><td>SVG、PostScript<span class="note">（ベジェ曲線・ポリゴンの定義）</span></td></tr>
+    <tr><td>音楽</td><td>WAV、MP3<span class="note">（波形データ）</span></td><td>MIDI、楽譜画像<span class="note">（スコアデータ）</span></td></tr>
+    <tr><td>動画</td><td>GIF、AVI、MP4<span class="note">（フレームの連続）</span></td><td>Flash<span class="note">（リソース＋スクリプト）</span></td></tr>
+    <tr><td>スライド</td><td>PPTX<span class="note">（テキスト・画像・レイアウトをリッチに統合）</span></td><td>Markdown<span class="note">（構造化されたテキスト）</span></td></tr>
+    <tr><td>グラフ</td><td>PNG<span class="note">（画像）</span></td><td>CSV<span class="note">（表データ）</span></td></tr>
+    <tr><td>ソースコード</td><td>.js、.html<span class="note">（テキスト）</span></td><td>Markdown<span class="note">（自然言語での仕様）</span></td></tr>
   </table>
 </div>
 
 <!-- Slide 8: Music x Vector -->
 <div class="slide" id="slide-8">
-  <h2>例: 音楽のベクタ<br>(MIDI) を入力に</h2>
-  <div class="media-container">
-    <img src="resources/piano_tensaku_tweet.png" alt="Piano Tensaku Tweet">
+  <h2>例: 音楽の<span class="accent">"ベクタ"</span> MIDI を入力</h2>
+  <div class="media-container split-layout">
+    <div class="split-left">
+      <img src="resources/piano_tensaku_tweet.png" alt="Piano Tensaku Tweet">
+    </div>
+    <div class="split-right">
+      <video src="resources/midi_to_report.mp4" autoplay loop muted playsinline></video>
+      <img src="resources/midi_to_report1.jpeg" alt="MIDI Report 1">
+      <img src="resources/midi_to_report2.jpeg" alt="MIDI Report 2">
+      <img src="resources/midi_to_report3.jpeg" alt="MIDI Report 3">
+    </div>
   </div>
   <div class="link"><a href="https://x.com/kakira9618/status/1919286710254317639" target="_blank">https://x.com/kakira9618/status/1919286710254317639</a></div>
 </div>
 
 <!-- Slide 9: iPad App -->
 <div class="slide" id="slide-9">
-  <h2>現在<br><span class="accent-pink">iPadアプリ</span>化中</h2>
+  <h2>現在、<span class="accent-pink">iPadアプリ</span>化中</h2>
   <div class="media-container">
     <img src="resources/piano_tensaku_product.png" alt="Piano Tensaku Product">
   </div>
@@ -390,7 +580,7 @@ table tr:nth-child(even) td {
 
 <!-- Slide 12: Slide from Vector -->
 <div class="slide" id="slide-12">
-  <h2>もちろん このスライドも<br><span class="accent">"ベクタ"</span> からの生成</h2>
+  <h2>もちろんこのスライドも<br><span class="accent">"ベクタ"</span> からの生成</h2>
   <div class="media-container two-images">
     <img src="resources/slide_from_vector.png" alt="Slide From Vector Result">
     <img src="resources/slide_from_vector_prompt.png" alt="Slide From Vector Prompt">
@@ -406,7 +596,7 @@ table tr:nth-child(even) td {
     <img src="resources/title-final.png" alt="Book Cover">
     <img src="resources/qrcode.png" alt="QR Code" style="background: #fff; padding: 20px;">
   </div>
-  <div class="link"><a href="https://techbookfest.org/product/gm3siYnQ8wFwSDuY3WdrnY?productVariantID=aa09VYxqsyBF4QRKXCk9X6" target="_blank">技術書典で販売中</a></div>
+  <p class="subtitle" style="margin-top: 32px;">ブース<strong style="background: rgba(255, 255, 255, 0.18); padding: 4px 14px; margin: 0 6px; border-radius: 4px;">【A-5】</strong>で物理本頒布・<a href="https://techbookfest.org/product/gm3siYnQ8wFwSDuY3WdrnY?productVariantID=aa09VYxqsyBF4QRKXCk9X6&utm_campaign=share" target="_blank" style="color: #fff; border-bottom: 2px solid rgba(255, 255, 255, 0.55);">技術書典</a>でオンライン頒布中</p>
 </div>
 
 </div>
